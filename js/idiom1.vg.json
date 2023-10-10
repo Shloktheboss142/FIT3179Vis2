@@ -5,7 +5,7 @@
   "params": [
     {
       "name": "Year_selection",
-      "value": 2020,
+      "value": 2010,
       "bind": {
         "input": "range",
         "min": 2000,
@@ -75,7 +75,7 @@
           "field": "Value",
           "type": "quantitative",
           "title": "Energy Generated (KTOE)",
-          "scale": { "domain": [0, 350000], "scheme": "greens" },
+          "scale": { "scheme": "greens" },
           "legend": { "orient": "none", "legendX": 170, "legendY": 310, "title": "Energy Generated (KTOE)", "direction": "horizontal" }
         },
         "tooltip": [
