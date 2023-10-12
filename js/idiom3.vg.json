@@ -1,100 +1,62 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container",
-    "height": 400,
-    "description": "Stock prices of 5 Tech Companies over Time.",
-    "data": {
-      "url": "https://raw.githubusercontent.com/Shloktheboss142/FIT3179_Homework_4/main/data/lineData.csv"
-    },
-    "layer": [
-      {
-        "mark": {
-          "type": "line",
-          "interpolate": "monotone"
-        },
-        "params": [
-          {
-            "name": "Country",
-            "select": { "type": "point", "fields": ["LOCATION"] },
-            "bind": {
-              "LOCATION": {
-                "input": "select",
-                "options": [
-                  null,
-                  "Australia",
-                  "Malaysia",
-                  "China",
-                  "India",
-                  "Indonesia",
-                  "United States"
-                ],
-                "labels": [
-                  "All",
-                  "Australia",
-                  "Malaysia",
-                  "China",
-                  "India",
-                  "Indonesia",
-                  "United States"
-                ],
-                "name": "Country Selection: "
-              }
-            }
-          }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Shloktheboss142/FIT3179Vis2/main/data/co2emissions.csv"
+  },
+  "encoding": {
+    "y": { "field": "Energy Source", "type": "nominal" },
+    "x": { "field": "CO2 Emissions (gCO2/kWh)", "type": "quantitative" },
+    "color": {
+      "field": "Energy Source",
+      "scale": {
+        "domain": [
+          "Biomass",
+          "Coal",
+          "Hydroelectric",
+          "Natural Gas",
+          "Nuclear",
+          "Oil",
+          "Solar",
+          "Wind"
+        ],
+        "range": [
+          "#0E7735",
+          "#AD4433",
+          "#208943",
+          "#C0673F",
+          "#329A51",
+          "#E4A865",
+          "#7BC77D",
+          "#94D391"
         ]
       },
-      {
-        "mark": {
-          "type": "point",
-          "filled": true,
-          "size": 75
-        }
-      },
-      {
-        "transform": [{ "filter": { "field": "TIME", "oneOf": ["2021"] } }],
-        "mark": {
-          "type": "text",
-          "align": "left",
-          "baseline": "middle",
-          "dx": 7
-        },
-        "encoding": {
-          "x": { "field": "TIME", "type": "ordinal" },
-          "y": { "field": "Value", "type": "quantitative" },
-          "text": { "field": "LOCATION", "type": "nominal" }
-        }
-      }
-    ],
-    "transform": [{ "filter": { "param": "Country", "field": "LOCATION" } }],
-    "encoding": {
-      "x": {
-        "field": "TIME",
-        "type": "ordinal",
-        "title": "Year",
-        "axis": { "labelAngle": 0, "labelAlign": "center" }
-      },
-      "y": {
-        "field": "Value",
-        "type": "quantitative",
-        "title": "Renewable Energy (KTOE)"
-      },
-      "color": {
-        "field": "LOCATION",
-        "type": "nominal",
-        "title": "Country",
-        "legend": { "orient": "none", "legendX": 10, "legendY": 5 }
-      },
-      "tooltip": [
-        { "field": "LOCATION", "type": "nominal", "title": "Country" },
-        { "field": "TIME", "type": "ordinal", "title": "Year" },
-        {
-          "field": "Value",
-          "type": "quantitative",
-          "format": ".0f",
-          "title": "Energy Generated (KTOE)"
-        }
-      ]
+      "legend": false
     },
-    "config": {}
-  }
-  
+    "tooltip": [
+      { "field": "Energy Source", "type": "nominal" },
+      { "field": "CO2 Emissions (gCO2/kWh)", "type": "quantitative" }
+    ]
+  },
+  "layer": [
+    {
+      "mark": "bar"
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 3
+      },
+      "encoding": {
+        "text": { "field": "CO2 Emissions (gCO2/kWh)", "type": "quantitative" },
+        "tooltip": [
+          { "field": "Energy Source", "type": "nominal" },
+          { "field": "CO2 Emissions (gCO2/kWh)", "type": "quantitative" }
+        ]
+      }
+    }
+  ]
+}

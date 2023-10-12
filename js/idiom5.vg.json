@@ -1,0 +1,22 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 400,
+    "data": {"url": "https://raw.githubusercontent.com/Shloktheboss142/FIT3179Vis2/main/data/aususage.csv"},
+    "params": [
+        {
+            "name": "Year",
+            "value": 2017,
+            "bind": {"input": "range", "min": 2017, "max": 2021, "step": 1}
+        }
+    ],
+    "transform": [
+        {"filter": "datum.Year == Year"}
+    ],
+    "mark": {"type": "arc", "innerRadius": 120, "tooltip": true, "outerRadius": 180},
+    "encoding": {
+      "theta": {"field": "Amount", "type": "quantitative"},
+      "color": {"field": "Sector", "type": "nominal"}
+    }
+  }
+  
