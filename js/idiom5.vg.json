@@ -14,7 +14,12 @@
   ],
   "encoding": {
     "theta": { "field": "Amount", "type": "quantitative", "stack": true },
-    "color": { "field": "Sector", "type": "nominal", "legend": null, "scale": { "scheme": "orangered" } }
+    "color": {
+      "field": "Sector",
+      "type": "nominal",
+      "legend": null,
+      "scale": { "scheme": "orangered" }
+    }
   },
   "layer": [
     {
@@ -24,13 +29,23 @@
         "innerRadius": 120,
         "tooltip": true,
         "outerRadius": 180
+      },
+      "encoding": {
+        "tooltip": [
+          { "field": "Sector", "type": "nominal" },
+          { "field": "Amount", "type": "quantitative", "title": "Amount of energy used (KWH)" }
+        ]
       }
     },
     {
-        "transform": [{ "filter": "datum.Year == Year" }],
+      "transform": [{ "filter": "datum.Year == Year" }],
       "mark": { "type": "text", "radius": 220, "tooltip": true, "size": 15 },
       "encoding": {
-        "text": { "field": "Sector", "type": "nominal" }
+        "text": { "field": "Sector", "type": "nominal" },
+        "tooltip": [
+          { "field": "Sector", "type": "nominal" },
+          { "field": "Amount", "type": "quantitative", "title": "Amount of energy used (KWH)" }
+        ]
       }
     }
   ]
