@@ -5,101 +5,136 @@
   },
   "height": 600,
   "width": "container",
-  "mark": "bar",
-  "params": [
+  "layer": [
     {
-      "name": "Country",
-      "select": { "type": "point", "fields": ["Country"] },
-      "bind": {
-        "Country": {
-          "input": "select",
-          "options": [
-            null,
-            "Argentina",
-            "Brazil",
-            "Egypt",
-            "India",
-            "Indonesia",
-            "Mainland China",
-            "Malaysia",
-            "Qatar",
-            "Singapore",
-            "Sri Lanka",
-            "United Arab Emirates"
-          ],
-          "labels": [
-            "All",
-            "Argentina",
-            "Brazil",
-            "Egypt",
-            "India",
-            "Indonesia",
-            "Mainland China",
-            "Malaysia",
-            "Qatar",
-            "Singapore",
-            "Sri Lanka",
-            "United Arab Emirates"
-          ],
-          "name": "Country Selection: "
+      "mark": "bar",
+      "params": [
+        {
+          "name": "Country",
+          "select": { "type": "point", "fields": ["Country"] },
+          "bind": {
+            "Country": {
+              "input": "select",
+              "options": [
+                null,
+                "Argentina",
+                "Brazil",
+                "Egypt",
+                "India",
+                "Indonesia",
+                "Mainland China",
+                "Malaysia",
+                "Qatar",
+                "Singapore",
+                "Sri Lanka",
+                "United Arab Emirates"
+              ],
+              "labels": [
+                "All",
+                "Argentina",
+                "Brazil",
+                "Egypt",
+                "India",
+                "Indonesia",
+                "Mainland China",
+                "Malaysia",
+                "Qatar",
+                "Singapore",
+                "Sri Lanka",
+                "United Arab Emirates"
+              ],
+              "name": "Country Selection: "
+            }
+          }
+        }
+      ],
+      "transform": [{ "filter": { "param": "Country", "field": "Country" } }],
+      "encoding": {
+        "x": {
+          "timeUnit": "year",
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Capacity GW & Generation TWh",
+          "type": "quantitative",
+          "title": "Energy Generated (TWh)"
+        },
+        "color": {
+          "field": "Sector",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Biomass",
+              "Coal",
+              "Hydroelectric",
+              "Natural Gas",
+              "Nuclear",
+              "Oil",
+              "Solar",
+              "Wind"
+            ],
+            "range": [
+              "#0E7735",
+              "#AD4433",
+              "#208943",
+              "#C0673F",
+              "#329A51",
+              "#E4A865",
+              "#7BC77D",
+              "#94D391"
+            ]
+          },
+          "title": "Sector",
+          "legend": { "orient": "none", "legendX": 10, "legendY": 5 }
+        },
+        "tooltip": [
+          {
+            "aggregate": "sum",
+            "field": "Capacity GW & Generation TWh",
+            "type": "quantitative",
+            "format": ".2f",
+            "title": "Energy Generated (TWh)"
+          },
+          {
+            "field": "Sector",
+            "type": "nominal"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [{ "filter": { "param": "Country", "field": "Country" } }],
+      "mark": 
+      {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dy": -20
+      },
+      "encoding": {
+        "x": {
+          "timeUnit": "year",
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Capacity GW & Generation TWh",
+          "type": "quantitative",
+          "title": "Energy Generated (TWh)"
+        },
+        "text": {
+          "aggregate": "sum",
+          "field": "Capacity GW & Generation TWh",
+          "type": "quantitative",
+          "format": ".0f"
         }
       }
     }
-  ],
-  "transform": [{ "filter": { "param": "Country", "field": "Country" } }],
-  "encoding": {
-    "x": {
-      "timeUnit": "year",
-      "field": "Year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "y": {
-      "aggregate": "sum",
-      "field": "Capacity GW & Generation TWh",
-      "type": "quantitative",
-      "title": "Energy Generated (TWh)"
-    },
-    "color": {
-      "field": "Sector",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Biomass",
-          "Coal",
-          "Hydroelectric",
-          "Natural Gas",
-          "Nuclear",
-          "Oil",
-          "Solar",
-          "Wind"
-        ],
-        "range": [
-          "#0E7735",
-          "#AD4433",
-          "#208943",
-          "#C0673F",
-          "#329A51",
-          "#E4A865",
-          "#7BC77D",
-          "#94D391"
-        ]
-      },
-      "title": "Sector",
-      "legend": { "orient": "none", "legendX": 10, "legendY": 5 }
-    },
-    "tooltip": [
-      {
-        "aggregate": "sum",
-        "field": "Capacity GW & Generation TWh",
-        "type": "quantitative",
-        "format": ".2f",
-        "title": "Energy Generated (TWh)"
-      },
-      {
-        "field": "Sector",
-        "type": "nominal"
-      }
-    ]
-  }
+  ]
+  
 }

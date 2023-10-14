@@ -68,38 +68,66 @@
         },
         { "filter": "datum.Year == Year_selection" }
       ],
-      "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
-      "encoding": {
-        "shape": { "field": "geo", "type": "geojson" },
-        "color": {
-          "field": "Primary energy consumption per capita (kWh/person)",
-          "type": "quantitative",
-          "title": "Energy Consumed (KWH/Person)",
-          "scale": { "scheme": "reds" },
-          "legend": {
-            "orient": "none",
-            "legendX": 45,
-            "legendY": 470,
-            "title": "Energy Consumed (KWH/Person)",
-            "titleFontSize": 11,
-            "titleFontWeight": 500,
-            "direction": "horizontal",
-            "gradientLength": 200,
-            "gradientThickness": 20,
-            "gradientStrokeColor": "black",
-            "gradientStrokeWidth": 0.3
+      "layer": [
+        {
+          "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
+          "encoding": {
+            "shape": { "field": "geo", "type": "geojson" },
+            "color": {
+              "field": "Primary energy consumption per capita (kWh/person)",
+              "type": "quantitative",
+              "title": "Energy Consumed (KWH/Person)",
+              "scale": { "scheme": "reds" },
+              "legend": {
+                "orient": "none",
+                "legendX": 45,
+                "legendY": 470,
+                "title": "Energy Consumed (KWH/Person)",
+                "titleFontSize": 11,
+                "titleFontWeight": 500,
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "gradientThickness": 20,
+                "gradientStrokeColor": "black",
+                "gradientStrokeWidth": 0.3
+              }
+            },
+            "tooltip": [
+              { "field": "Entity", "type": "nominal", "title": "Country" },
+              {
+                "field": "Primary energy consumption per capita (kWh/person)",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Energy Consumed Per Capita (KWh/Person)"
+              }
+            ]
           }
         },
-        "tooltip": [
-          { "field": "Entity", "type": "nominal", "title": "Country" },
-          {
-            "field": "Primary energy consumption per capita (kWh/person)",
-            "type": "quantitative",
-            "format": ".0f",
-            "title": "Energy Consumed Per Capita (KWh/Person)"
+        {
+          "transform": [{"filter": {"field": "Entity", "oneOf": ["Australia", "India", "Canada", "China", "Russia", "Brazil"]}}],
+          "mark": {
+            "type": "text",
+            "fontSize": 15,
+            "fontWeight": 500,
+            "fill": "black"
+          },
+          "encoding": {
+            "text": {
+              "field": "Entity",
+              "type": "nominal"
+            },
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            }
           }
-        ]
-      }
+        }
+      ]
+      
     }
   ],
   "config": {}
