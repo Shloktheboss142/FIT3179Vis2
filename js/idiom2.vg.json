@@ -106,7 +106,7 @@
       }
     },
     {
-      "transform": [{ "filter": "datum.Country == CountrySelection" }],
+      "transform": [{ "filter": { "param": "CountrySelection", "field": "Country" } }],
       "mark": {
         "type": "text",
         "align": "center",
