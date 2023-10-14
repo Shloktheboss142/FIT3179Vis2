@@ -10,7 +10,7 @@
       "mark": "bar",
       "params": [
         {
-          "name": "Country",
+          "name": "CountrySelection",
           "select": { "type": "point", "fields": ["Country"] },
           "bind": {
             "Country": {
@@ -48,7 +48,7 @@
           }
         }
       ],
-      "transform": [{ "filter": { "param": "Country", "field": "Country" } }],
+      "transform": [{ "filter": { "param": "CountrySelection", "field": "Country" } }],
       "encoding": {
         "x": {
           "timeUnit": "year",
@@ -106,9 +106,8 @@
       }
     },
     {
-      "transform": [{ "filter": { "param": "Country", "field": "Country" } }],
-      "mark": 
-      {
+      "transform": [{ "filter": "datum.Country == CountrySelection" }],
+      "mark": {
         "type": "text",
         "align": "center",
         "baseline": "top",
@@ -136,5 +135,4 @@
       }
     }
   ]
-  
 }

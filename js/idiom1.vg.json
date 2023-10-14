@@ -115,7 +115,21 @@
           }
         },
         {
-          "transform": [{"filter": {"field": "LOCATION", "oneOf": ["Australia", "India", "Canada", "China", "Russia", "Brazil"]}}],
+          "transform": [
+            {
+              "filter": {
+                "field": "LOCATION",
+                "oneOf": [
+                  "Australia",
+                  "India",
+                  "United States of America",
+                  "China",
+                  "Russia",
+                  "Brazil"
+                ]
+              }
+            }
+          ],
           "mark": {
             "type": "text",
             "fontSize": 15,
@@ -134,7 +148,16 @@
             "latitude": {
               "field": "lat",
               "type": "quantitative"
-            }
+            },
+            "tooltip": [
+              { "field": "LOCATION", "type": "nominal", "title": "Country" },
+              {
+                "field": "Value",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Energy Generated (KTOE)"
+              }
+            ]
           }
         }
       ]

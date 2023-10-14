@@ -25,10 +25,10 @@
         "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
       },
       "transform": [
-          {
-            "calculate": "'No data for ' + datum.properties.NAME",
-            "as": "note"
-          }
+        {
+          "calculate": "'No data for ' + datum.properties.NAME",
+          "as": "note"
+        }
       ],
       "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "darkgray" },
       "encoding": { "tooltip": { "field": "note" } }
@@ -104,7 +104,19 @@
           }
         },
         {
-          "transform": [{"filter": {"field": "Entity", "oneOf": ["Australia", "India", "Canada", "China", "Russia", "Brazil"]}}],
+          "transform": [
+            {
+              "filter": {
+                "field": "Entity",
+                "oneOf": [
+                  "Australia",
+                  "Canada",
+                  "Saudi Arabia",
+                  "United States of America"
+                ]
+              }
+            }
+          ],
           "mark": {
             "type": "text",
             "fontSize": 15,
@@ -123,11 +135,54 @@
             "latitude": {
               "field": "lat",
               "type": "quantitative"
-            }
+            },
+            "tooltip": [
+              { "field": "Entity", "type": "nominal", "title": "Country" },
+              {
+                "field": "Primary energy consumption per capita (kWh/person)",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Energy Consumed Per Capita (KWh/Person)"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            { "filter": { "field": "Entity", "oneOf": ["Iceland", "Oman"] } }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 15,
+            "fontWeight": 500,
+            "fill": "black",
+            "dy": 13
+          },
+          "encoding": {
+            "text": {
+              "field": "Entity",
+              "type": "nominal"
+            },
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              { "field": "Entity", "type": "nominal", "title": "Country" },
+              {
+                "field": "Primary energy consumption per capita (kWh/person)",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Energy Consumed Per Capita (KWh/Person)"
+              }
+            ]
           }
         }
       ]
-      
     }
   ],
   "config": {}

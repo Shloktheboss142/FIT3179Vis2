@@ -14,7 +14,7 @@
   ],
   "encoding": {
     "theta": { "field": "Amount", "type": "quantitative", "stack": true },
-    "color": { "field": "Sector", "type": "nominal", "legend": null, "scale": { "scheme": "tableau10" } }
+    "color": { "field": "Sector", "type": "nominal", "legend": null, "scale": { "scheme": "orangered" } }
   },
   "layer": [
     {

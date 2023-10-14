@@ -32,7 +32,7 @@
           "#94D391"
         ]
       },
-      "legend": false
+      "legend": null
     },
     "tooltip": [
       { "field": "Energy Source", "type": "nominal" },
